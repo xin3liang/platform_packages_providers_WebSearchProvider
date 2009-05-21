@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The Android Open Source Project
+ * Copyright (C) 2009 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.googlesearch;
+package com.android.websearch;
 
 import com.android.internal.database.ArrayListCursor;
 import com.google.android.net.GoogleHttpClient;
@@ -31,6 +31,7 @@ import org.json.JSONException;
 import android.app.SearchManager;
 import android.content.ContentProvider;
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.AbstractCursor;
 import android.database.Cursor;
 import android.net.Uri;
@@ -41,35 +42,42 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 
 /**
  * Use network-based Google Suggests to provide search suggestions.
- * 
+ *
  * Future:  Merge live suggestions with saved recent queries
  */
 public class SuggestionProvider extends ContentProvider {
-    
-    public static final Uri CONTENT_URI = Uri.parse(
-            "content://com.android.googlesearch.SuggestionProvider");
-
     private static final String USER_AGENT = "Android/1.0";
-    private String mSuggestUri;
     private static final int HTTP_TIMEOUT_MS = 1000;
-    
+
     // TODO: this should be defined somewhere
     private static final String HTTP_TIMEOUT = "http.connection-manager.timeout";
 
-    private static final String LOG_TAG = "GoogleSearch.SuggestionProvider";
-    
+    private static final String LOG_TAG = "WebSearch.SuggestionProvider";
+
     /* The suggestion columns used */
     private static final String[] COLUMNS = new String[] {
-            "_id",
-            SearchManager.SUGGEST_COLUMN_TEXT_1,
-            SearchManager.SUGGEST_COLUMN_TEXT_2,
-            SearchManager.SUGGEST_COLUMN_QUERY};
+        "_id",
+        SearchManager.SUGGEST_COLUMN_QUERY,
+        SearchManager.SUGGEST_COLUMN_TEXT_1,
+        SearchManager.SUGGEST_COLUMN_TEXT_2,
+    };
+
+    private static final String[] COLUMNS_WITHOUT_DESCRIPTION = new String[] {
+        "_id",
+        SearchManager.SUGGEST_COLUMN_QUERY,
+        SearchManager.SUGGEST_COLUMN_TEXT_1,
+    };
 
     private HttpClient mHttpClient;
+
+    private final HashMap<String, SearchEngineInfo> mSearchEngines =
+        new HashMap<String, SearchEngineInfo>();
 
     @Override
     public boolean onCreate() {
@@ -78,9 +86,6 @@ public class SuggestionProvider extends ContentProvider {
         HttpParams params = mHttpClient.getParams();
         params.setLongParameter(HTTP_TIMEOUT, HTTP_TIMEOUT_MS);
 
-        // NOTE:  Do not look up the resource here;  Localization changes may not have completed
-        // yet (e.g. we may still be reading the SIM card).
-        mSuggestUri = null;
         return true;
     }
 
@@ -106,43 +111,63 @@ public class SuggestionProvider extends ContentProvider {
             String[] selectionArgs, String sortOrder) {
         String query = selectionArgs[0];
         if (TextUtils.isEmpty(query)) {
-            
-            /* Can't pass back null, things blow up */
+            // Can't pass back null, things blow up
             return makeEmptyCursor();
         }
-        try {
-            query = URLEncoder.encode(query, "UTF-8");
-            // NOTE:  This code uses resources to optionally select the search Uri, based on the
-            // MCC value from the SIM.  iThe default string will most likely be fine.  It is
-            // paramerterized to accept info from the Locale, the language code is the first
-            // parameter (%1$s) and the country code is the second (%2$s).  This code *must* 
-            // function in the same way as a similar lookup in
-            // com.android.browser.BrowserActivity#onCreate().  If you change
-            // either of these functions, change them both.  (The same is true for the underlying
-            // resource strings, which are stored in mcc-specific xml files.)
-            if (mSuggestUri == null) {
-                Locale l = Locale.getDefault();
-                mSuggestUri = getContext().getResources().getString(R.string.google_search_base,
-                                                                    l.getLanguage(), 
-                                                                    l.getCountry().toLowerCase()) 
-                        + "json=true&q=";
-            }
 
-            HttpPost method = new HttpPost(mSuggestUri + query);
+        List<String> parts = uri.getPathSegments();
+        if (parts.size() < 2) {
+            Log.i(LOG_TAG, "Invalid URI " + uri.toString());
+            return makeEmptyCursor();
+        }
+
+        // Check if the specific search engine data is already loaded and if not load it now.
+        String engine_index = parts.get(parts.size() - 2);
+        SearchEngineInfo engine = null;
+        synchronized(this) {
+            engine = mSearchEngines.get(engine_index);
+            if (engine == null) {
+                try {
+                    engine = new SearchEngineInfo(getContext(), engine_index);
+                } catch (IllegalArgumentException exception) {
+                    Log.e(LOG_TAG, "Cannot load search engine index " + engine_index, exception);
+                    return makeEmptyCursor();
+                }
+                mSearchEngines.put(engine_index, engine);
+            }
+        }
+
+        String suggestUri = engine.getSuggestUriForQuery(query);
+        Log.i(LOG_TAG, suggestUri);
+        if (TextUtils.isEmpty(suggestUri)) {
+            // No suggest URI available for this engine
+            return makeEmptyCursor();
+        }
+
+        try {
+            HttpPost method = new HttpPost(suggestUri);
             StringEntity content = new StringEntity("");
             method.setEntity(content);
             HttpResponse response = mHttpClient.execute(method);
             if (response.getStatusLine().getStatusCode() == 200) {
-                
-                /* Goto http://www.google.com/complete/search?json=true&q=foo
-                 * to see what the data format looks like. It's basically a json
-                 * array containing 4 other arrays. We only care about the middle
-                 * 2 which contain the suggestions and their popularity.
+                /* The data format is a JSON array with items being regular strings or JSON arrays
+                 * themselves. We are interested in the second and third elements, both of which
+                 * should be JSON arrays. The second element/array contains the suggestions and the
+                 * third element contains the descriptions. Some search engines don't support
+                 * suggestion descriptions so the third element is optional.
                  */
                 JSONArray results = new JSONArray(EntityUtils.toString(response.getEntity()));
                 JSONArray suggestions = results.getJSONArray(1);
-                JSONArray popularity = results.getJSONArray(2);
-                return new SuggestionsCursor(suggestions, popularity);
+                JSONArray descriptions = null;
+                if (results.length() > 2) {
+                    descriptions = results.getJSONArray(2);
+                    // Some search engines given an empty array "[]" for descriptions instead of
+                    // not including it in the response.
+                    if (descriptions.length() == 0) {
+                        descriptions = null;
+                    }
+                }
+                return new SuggestionsCursor(suggestions, descriptions);
             }
         } catch (UnsupportedEncodingException e) {
             Log.w(LOG_TAG, "Error", e);
@@ -158,14 +183,14 @@ public class SuggestionProvider extends ContentProvider {
 
         /* Contains the actual suggestions */
         final JSONArray mSuggestions;
-        
+
         /* This contains the popularity of each suggestion
          * i.e. 165,000 results. It's not related to sorting.
          */
-        final JSONArray mPopularity;
-        public SuggestionsCursor(JSONArray suggestions, JSONArray popularity) {
+        final JSONArray mDescriptions;
+        public SuggestionsCursor(JSONArray suggestions, JSONArray descriptions) {
             mSuggestions = suggestions;
-            mPopularity = popularity;
+            mDescriptions = descriptions;
         }
 
         @Override
@@ -175,21 +200,21 @@ public class SuggestionProvider extends ContentProvider {
 
         @Override
         public String[] getColumnNames() {
-            return COLUMNS;
+            return (mDescriptions != null ? COLUMNS : COLUMNS_WITHOUT_DESCRIPTION);
         }
 
         @Override
         public String getString(int column) {
             if ((mPos != -1)) {
-                if ((column == 1) || (column == 3)) {
+                if ((column == 1) || (column == 2)) {
                     try {
                         return mSuggestions.getString(mPos);
                     } catch (JSONException e) {
                         Log.w(LOG_TAG, "Error", e);
                     }
-                } else if (column == 2) {
+                } else if (column == 3) {
                     try {
-                        return mPopularity.getString(mPos);
+                        return mDescriptions.getString(mPos);
                     } catch (JSONException e) {
                         Log.w(LOG_TAG, "Error", e);
                     }
@@ -231,7 +256,7 @@ public class SuggestionProvider extends ContentProvider {
             throw new UnsupportedOperationException();
         }
     }
-    
+
     @Override
     public Uri insert(Uri uri, ContentValues values) {
         throw new UnsupportedOperationException();
