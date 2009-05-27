@@ -138,7 +138,6 @@ public class SuggestionProvider extends ContentProvider {
         }
 
         String suggestUri = engine.getSuggestUriForQuery(query);
-        Log.i(LOG_TAG, suggestUri);
         if (TextUtils.isEmpty(suggestUri)) {
             // No suggest URI available for this engine
             return makeEmptyCursor();
