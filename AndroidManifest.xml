@@ -21,8 +21,16 @@
     package="com.android.websearch"
     android:sharedUserId="android.uid.shared">
 
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
     <application android:label="Web Search"
         android:process="android.process.acore">
+
+        <receiver android:name=".WebSearchReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
 
         <activity android:name=".WebSearch"
                 android:theme="@android:style/Theme.NoDisplay"
