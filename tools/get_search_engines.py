@@ -58,6 +58,8 @@ class SearchEngineManager(object):
 
     if str.startswith('L"'):
       str = str[2:]
+    if str.startswith('@') or str.startswith('?'):
+      str = '\\' + str
 
     str = str.strip('"').replace('\\x', '&#x')
     str = str.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
@@ -74,7 +76,7 @@ class SearchEngineManager(object):
     """
     # Find the first occurance of this search engine name in the form
     # " <name> =" in the chrome data file.
-    re_exp = '\s' + name + '[\s=]'
+    re_exp = '\s' + name + '\s*='
     search_obj = re.search(re_exp, self.chrome_data)
     if not search_obj:
       print ('Unable to find data for search engine ' + name +
@@ -85,6 +87,15 @@ class SearchEngineManager(object):
     start_pos = self.chrome_data.find('{', search_obj.start()) + 1;
     end_pos = self.chrome_data.find('};', start_pos);
     engine_data_str = self.chrome_data[start_pos:end_pos]
+
+    # Remove c++ style '//' comments at the ends of each line
+    engine_data_lines = engine_data_str.split('\n')
+    engine_data_str = ""
+    for line in engine_data_lines:
+        start_pos = line.find(' // ')
+        if start_pos != -1:
+            line = line[:start_pos]
+        engine_data_str = engine_data_str + line + '\n'
 
     # Join multiple line strings into a single string.
     engine_data_str = re.sub('\"\s+\"', '', engine_data_str)
