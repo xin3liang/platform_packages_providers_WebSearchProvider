@@ -60,10 +60,19 @@ public class SuggestionProvider extends ContentProvider {
 
     private static final String LOG_TAG = "WebSearch.SuggestionProvider";
 
-    /* The suggestion columns used */
+    // Indices of the columns in the below arrays.
+    private static final int COLUMN_INDEX_ID = 0;
+    private static final int COLUMN_INDEX_QUERY = 1;
+    private static final int COLUMN_INDEX_ICON = 2;
+    private static final int COLUMN_INDEX_TEXT_1 = 3;
+    private static final int COLUMN_INDEX_TEXT_2 = 4;
+
+    // The suggestion columns used. If you are adding a new entry to these arrays make sure to
+    // update the list of indices declared above.
     private static final String[] COLUMNS = new String[] {
         "_id",
         SearchManager.SUGGEST_COLUMN_QUERY,
+        SearchManager.SUGGEST_COLUMN_ICON_1,
         SearchManager.SUGGEST_COLUMN_TEXT_1,
         SearchManager.SUGGEST_COLUMN_TEXT_2,
     };
@@ -71,6 +80,7 @@ public class SuggestionProvider extends ContentProvider {
     private static final String[] COLUMNS_WITHOUT_DESCRIPTION = new String[] {
         "_id",
         SearchManager.SUGGEST_COLUMN_QUERY,
+        SearchManager.SUGGEST_COLUMN_ICON_1,
         SearchManager.SUGGEST_COLUMN_TEXT_1,
     };
 
@@ -205,18 +215,20 @@ public class SuggestionProvider extends ContentProvider {
         @Override
         public String getString(int column) {
             if ((mPos != -1)) {
-                if ((column == 1) || (column == 2)) {
+                if ((column == COLUMN_INDEX_QUERY) || (column == COLUMN_INDEX_TEXT_1)) {
                     try {
                         return mSuggestions.getString(mPos);
                     } catch (JSONException e) {
                         Log.w(LOG_TAG, "Error", e);
                     }
-                } else if (column == 3) {
+                } else if (column == COLUMN_INDEX_TEXT_2) {
                     try {
                         return mDescriptions.getString(mPos);
                     } catch (JSONException e) {
                         Log.w(LOG_TAG, "Error", e);
                     }
+                } else if (column == COLUMN_INDEX_ICON) {
+                    return String.valueOf(R.drawable.magnifying_glass);
                 }
             }
             return null;
@@ -239,7 +251,7 @@ public class SuggestionProvider extends ContentProvider {
 
         @Override
         public long getLong(int column) {
-            if (column == 0) {
+            if (column == COLUMN_INDEX_ID) {
                 return mPos;        // use row# as the _Id
             }
             throw new UnsupportedOperationException();
