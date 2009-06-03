@@ -25,14 +25,14 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <bool   name="engine_1_enabled">true</bool>
-  <string name="engine_1_name">yahoo_uk</string>
-  <string name="engine_1_label">Yahoo! UK &amp; Ireland</string>
+  <string name="engine_1_name">yahoo_au</string>
+  <string name="engine_1_label">Yahoo!7</string>
   <bool   name="engine_2_enabled">true</bool>
-  <string name="engine_2_name">msn_en_GB</string>
-  <string name="engine_2_label">MSN UK</string>
+  <string name="engine_2_name">msn_en_AU</string>
+  <string name="engine_2_label">ninemsn.com.au</string>
   <bool   name="engine_3_enabled">true</bool>
-  <string name="engine_3_name">ask_uk</string>
-  <string name="engine_3_label">Ask.com UK</string>
+  <string name="engine_3_name">sensis</string>
+  <string name="engine_3_label">sensis.com.au</string>
   <bool   name="engine_4_enabled">false</bool>
   <string name="engine_4_name"></string>
   <string name="engine_4_label"></string>

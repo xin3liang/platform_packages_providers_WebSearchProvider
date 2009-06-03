@@ -45,12 +45,12 @@ at http://www.opensearch.org/Specifications/OpenSearch/1.1/Draft_4#OpenSearch_1.
     <item>UTF-8</item>
     <item>http://ff.search.yahoo.com/gossip?output=fxjson&amp;command={searchTerms}</item>
   </string-array>
-  <string-array name="yahoo_uk">
-    <item>uk.yahoo.com</item>
-    <item>http://uk.search.yahoo.com/favicon.ico</item>
-    <item>http://uk.search.yahoo.com/search?ei={inputEncoding}&amp;fr=crmas&amp;p={searchTerms}</item>
+  <string-array name="live_en_US">
+    <item>live.com</item>
+    <item>http://search.live.com/s/wlflag.ico</item>
+    <item>http://search.live.com/results.aspx?setlang=en-US&amp;mkt=en-US&amp;q={searchTerms}</item>
     <item>UTF-8</item>
-    <item>http://uk-sayt.ff.search.yahoo.com/gossip-uk-sayt?output=fxjson&amp;command={searchTerms}</item>
+    <item></item>
   </string-array>
   <string-array name="aol">
     <item>aol.com</item>
@@ -66,19 +66,12 @@ at http://www.opensearch.org/Specifications/OpenSearch/1.1/Draft_4#OpenSearch_1.
     <item>UTF-8</item>
     <item>http://ss.ask.com/query?q={searchTerms}&amp;li=ff</item>
   </string-array>
-  <string-array name="ask_uk">
-    <item>uk.ask.com</item>
-    <item>http://uk.ask.com/favicon.ico</item>
-    <item>http://uk.ask.com/web?q={searchTerms}</item>
+  <string-array name="yahoo_uk">
+    <item>uk.yahoo.com</item>
+    <item>http://uk.search.yahoo.com/favicon.ico</item>
+    <item>http://uk.search.yahoo.com/search?ei={inputEncoding}&amp;fr=crmas&amp;p={searchTerms}</item>
     <item>UTF-8</item>
-    <item>http://ss.uk.ask.com/query?q={searchTerms}&amp;li=ff</item>
-  </string-array>
-  <string-array name="live_en_US">
-    <item>live.com</item>
-    <item>http://search.live.com/s/wlflag.ico</item>
-    <item>http://search.live.com/results.aspx?setlang=en-US&amp;mkt=en-US&amp;q={searchTerms}</item>
-    <item>UTF-8</item>
-    <item></item>
+    <item>http://uk-sayt.ff.search.yahoo.com/gossip-uk-sayt?output=fxjson&amp;command={searchTerms}</item>
   </string-array>
   <string-array name="msn_en_GB">
     <item>uk.msn.com</item>
@@ -87,4 +80,607 @@ at http://www.opensearch.org/Specifications/OpenSearch/1.1/Draft_4#OpenSearch_1.
     <item>UTF-8</item>
     <item></item>
   </string-array>
+  <string-array name="ask_uk">
+    <item>uk.ask.com</item>
+    <item>http://uk.ask.com/favicon.ico</item>
+    <item>http://uk.ask.com/web?q={searchTerms}</item>
+    <item>UTF-8</item>
+    <item>http://ss.uk.ask.com/query?q={searchTerms}&amp;li=ff</item>
+  </string-array>
+  <string-array name="seznam">
+    <item>seznam.cz</item>
+    <item>http://1.im.cz/szn/img/favicon.ico</item>
+    <item>http://search.seznam.cz/?q={searchTerms}</item>
+    <item>UTF-8</item>
+    <item>http:///suggest.fulltext.seznam.cz/?dict=fulltext_ff&amp;phrase={searchTerms}&amp;encoding={inputEncoding}&amp;response_encoding=utf-8</item>
+  </string-array>
+  <string-array name="centrum_cz">
+    <item>centrum.cz</item>
+    <item>http://img.centrum.cz/6/vy2/o/favicon.ico</item>
+    <item>http://search.centrum.cz/index.php?charset={inputEncoding}&amp;q={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="atlas_cz">
+    <item>atlas.cz</item>
+    <item>http://img.atlas.cz/favicon.ico</item>
+    <item>http://search.atlas.cz/?q={searchTerms}</item>
+    <item>windows-1250</item>
+    <item></item>
+  </string-array>
+  <string-array name="live_cs_CZ">
+    <item>live.com</item>
+    <item>http://search.live.com/s/wlflag.ico</item>
+    <item>http://search.live.com/results.aspx?mkt=cs-CZ&amp;q={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="jubii">
+    <item>jubii.dk</item>
+    <item>http://search.jubii.dk/favicon_jubii.ico</item>
+    <item>http://search.jubii.dk/cgi-bin/pursuit?query={searchTerms}</item>
+    <item>ISO-8859-1</item>
+    <item></item>
+  </string-array>
+  <string-array name="msn_da_DK">
+    <item>dk.msn.com</item>
+    <item>http://search.msn.dk/s/wlflag.ico</item>
+    <item>http://search.msn.dk/results.aspx?mkt=da-DK&amp;q={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="yahoo_dk">
+    <item>dk.yahoo.com</item>
+    <item>http://dk.search.yahoo.com/favicon.ico</item>
+    <item>http://dk.search.yahoo.com/search?ei={inputEncoding}&amp;fr=crmas&amp;p={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="eniro_dk">
+    <item>eniro.dk</item>
+    <item>http://eniro.dk/favicon.ico</item>
+    <item>http://eniro.dk/query?search_word={searchTerms}&amp;what=web_local</item>
+    <item>ISO-8859-1</item>
+    <item></item>
+  </string-array>
+  <string-array name="yahoo_at">
+    <item>at.yahoo.com</item>
+    <item>http://at.search.yahoo.com/favicon.ico</item>
+    <item>http://at.search.yahoo.com/search?ei={inputEncoding}&amp;fr=crmas&amp;p={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="msn_de_AT">
+    <item>at.msn.com</item>
+    <item>http://search.msn.at/s/wlflag.ico</item>
+    <item>http://search.msn.at/results.aspx?mkt=de-AT&amp;q={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="search_ch">
+    <item>search.ch</item>
+    <item>http://www.search.ch/favicon.ico</item>
+    <item>http://www.search.ch/?q={searchTerms}</item>
+    <item>ISO-8859-1</item>
+    <item></item>
+  </string-array>
+  <string-array name="yahoo_ch">
+    <item>ch.yahoo.com</item>
+    <item>http://ch.search.yahoo.com/favicon.ico</item>
+    <item>http://ch.search.yahoo.com/search?ei={inputEncoding}&amp;fr=crmas&amp;p={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="msn_de_CH">
+    <item>ch.msn.com</item>
+    <item>http://search.msn.ch/s/wlflag.ico</item>
+    <item>http://search.msn.ch/results.aspx?setlang=de-CH&amp;mkt=de-CH&amp;q={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="msn_fr_CH">
+    <item></item>
+    <item>http://search.msn.ch/s/wlflag.ico</item>
+    <item>http://search.msn.ch/results.aspx?setlang=fr-CH&amp;mkt=fr-CH&amp;q={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="bluewin">
+    <item>search.bluewin.ch</item>
+    <item>http://search.bluewin.ch/favicon.ico</item>
+    <item>http://search.bluewin.ch/bw/search/web/de/result.jsp?query={searchTerms}</item>
+    <item>ISO-8859-1</item>
+    <item></item>
+  </string-array>
+  <string-array name="msn_de_DE">
+    <item>de.msn.com</item>
+    <item>http://search.live.com/s/wlflag.ico</item>
+    <item>http://search.live.com/results.aspx?mkt=de-DE&amp;q={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="yahoo_de">
+    <item>de.yahoo.com</item>
+    <item>http://de.search.yahoo.com/favicon.ico</item>
+    <item>http://de.search.yahoo.com/search?ei={inputEncoding}&amp;fr=crmas&amp;p={searchTerms}</item>
+    <item>UTF-8</item>
+    <item>http://de-sayt.ff.search.yahoo.com/gossip-de-sayt?output=fxjson&amp;command={searchTerms}</item>
+  </string-array>
+  <string-array name="t_online">
+    <item>suche.t-online.de</item>
+    <item>http://suche.t-online.de/favicon.ico</item>
+    <item>http://suche.t-online.de/fast-cgi/tsc?sr=chrome&amp;q={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="ask_de">
+    <item>de.ask.com</item>
+    <item>http://de.ask.com/favicon.ico</item>
+    <item>http://de.ask.com/web?q={searchTerms}</item>
+    <item>UTF-8</item>
+    <item>http://ss.de.ask.com/query?q={searchTerms}&amp;li=ff</item>
+  </string-array>
+  <string-array name="web_de">
+    <item>web.de</item>
+    <item>http://img.ui-portal.de/search/img/webde/favicon.ico</item>
+    <item>http://suche.web.de/search/web/?su={searchTerms}</item>
+    <item>ISO-8859-1</item>
+    <item></item>
+  </string-array>
+  <string-array name="yahoo_au">
+    <item>au.yahoo.com</item>
+    <item>http://au.search.yahoo.com/favicon.ico</item>
+    <item>http://au.search.yahoo.com/search?ei={inputEncoding}&amp;fr=crmas&amp;p={searchTerms}</item>
+    <item>UTF-8</item>
+    <item>http://aue-sayt.ff.search.yahoo.com/gossip-au-sayt?output=fxjson&amp;command={searchTerms}</item>
+  </string-array>
+  <string-array name="msn_en_AU">
+    <item>ninemsn.com.au</item>
+    <item>http://search.live.com/s/wlflag.ico</item>
+    <item>http://search.live.com/results.aspx?mkt=en-AU&amp;q={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="sensis">
+    <item>sensis.com.au</item>
+    <item>http://www.sensis.com.au/favicon.ico</item>
+    <item>http://www.sensis.com.au/search.do?find={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="msn_en_IE">
+    <item>ie.msn.com</item>
+    <item>http://search.msn.ie/s/wlflag.ico</item>
+    <item>http://search.msn.ie/results.aspx?mkt=en-IE&amp;q={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="yahoo_nz">
+    <item>nz.yahoo.com</item>
+    <item>http://nz.search.yahoo.com/favicon.ico</item>
+    <item>http://nz.search.yahoo.com/search?ei={inputEncoding}&amp;fr=crmas&amp;p={searchTerms}</item>
+    <item>UTF-8</item>
+    <item>http://aue-sayt.ff.search.yahoo.com/gossip-nz-sayt?output=fxjson&amp;command={searchTerms}</item>
+  </string-array>
+  <string-array name="live_en_NZ">
+    <item>live.com</item>
+    <item>http://search.live.com/s/wlflag.ico</item>
+    <item>http://search.live.com/results.aspx?mkt=en-NZ&amp;q={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="yahoo_sg">
+    <item>sg.yahoo.com</item>
+    <item>http://sg.search.yahoo.com/favicon.ico</item>
+    <item>http://sg.search.yahoo.com/search?ei={inputEncoding}&amp;fr=crmas&amp;p={searchTerms}</item>
+    <item>UTF-8</item>
+    <item>http://sg-sayt.ff.search.yahoo.com/gossip-sg-sayt?output=fxjson&amp;command={searchTerms}</item>
+  </string-array>
+  <string-array name="msn_en_SG">
+    <item>sg.msn.com</item>
+    <item>http://search.msn.com.sg/s/wlflag.ico</item>
+    <item>http://search.msn.com.sg/results.aspx?mkt=en-SG&amp;q={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="rednano">
+    <item>rednano.sg</item>
+    <item>http://rednano.sg/favicon.ico</item>
+    <item>http://rednano.sg/sfe/lwi.action?querystring={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="msn_en_ZA">
+    <item>za.msn.com</item>
+    <item>http://search.msn.co.za/s/wlflag.ico</item>
+    <item>http://search.msn.co.za/results.aspx?mkt=en-ZA&amp;q={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="mweb">
+    <item>mweb.co.za</item>
+    <item>http://mweb.co.za/favicon.ico</item>
+    <item>http://search.mweb.co.za/search?&amp;q={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="iafrica">
+    <item>iafrica.com</item>
+    <item></item>
+    <item>http://search.iafrica.com/search?q={searchTerms}</item>
+    <item>ISO-8859-1</item>
+    <item></item>
+  </string-array>
+  <string-array name="msn_es_ES">
+    <item>es.msn.com</item>
+    <item>http://search.msn.es/s/wlflag.ico</item>
+    <item>http://search.msn.es/results.aspx?mkt=es-ES&amp;q={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="yahoo_es">
+    <item>es.yahoo.com</item>
+    <item>http://es.search.yahoo.com/favicon.ico</item>
+    <item>http://es.search.yahoo.com/search?ei={inputEncoding}&amp;fr=crmas&amp;p={searchTerms}</item>
+    <item>UTF-8</item>
+    <item>http://es-sayt.ff.search.yahoo.com/gossip-es-sayt?output=fxjson&amp;command={searchTerms}</item>
+  </string-array>
+  <string-array name="terra_es">
+    <item>terra.es</item>
+    <item>http://buscador.terra.es/favicon.ico</item>
+    <item>http://buscador.terra.es/Default.aspx?query={searchTerms}&amp;source=Search</item>
+    <item>ISO-8859-1</item>
+    <item></item>
+  </string-array>
+  <string-array name="ozu">
+    <item>ozu.es</item>
+    <item>http://www.ozu.es/favicon.ico</item>
+    <item>http://buscar.ozu.es/index.php?q={searchTerms}</item>
+    <item>ISO-8859-1</item>
+    <item></item>
+  </string-array>
+  <string-array name="altavista_es">
+    <item>es.altavista.com</item>
+    <item>http://es.altavista.com/favicon.ico</item>
+    <item>http://es.altavista.com/web/results?q={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="msn_nl_BE">
+    <item>be.msn.com</item>
+    <item>http://search.live.com/s/wlflag.ico</item>
+    <item>http://search.live.com/results.aspx?setlang=nl-BE&amp;mkt=nl-BE&amp;q={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="msn_fr_BE">
+    <item></item>
+    <item>http://search.live.com/s/wlflag.ico</item>
+    <item>http://search.live.com/results.aspx?setlang=fr-BE&amp;mkt=fr-BE&amp;q={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="voila">
+    <item>voila.fr</item>
+    <item>http://search.ke.voila.fr/favicon.ico</item>
+    <item>http://rws.search.ke.voila.fr/RW/S/opensearch_voila?rdata={searchTerms}</item>
+    <item>ISO-8859-1</item>
+    <item>http://search.ke.voila.fr/fr/cmplopensearch/xml/fullxml?rdata={searchTerms}</item>
+  </string-array>
+  <string-array name="yahoo_fr">
+    <item>fr.yahoo.com</item>
+    <item>http://fr.search.yahoo.com/favicon.ico</item>
+    <item>http://fr.search.yahoo.com/search?ei={inputEncoding}&amp;fr=crmas&amp;p={searchTerms}</item>
+    <item>UTF-8</item>
+    <item>http://fr-sayt.ff.search.yahoo.com/gossip-fr-sayt?output=fxjson&amp;command={searchTerms}</item>
+  </string-array>
+  <string-array name="msn_fr_FR">
+    <item>fr.msn.com</item>
+    <item>http://search.msn.fr/s/wlflag.ico</item>
+    <item>http://search.msn.fr/results.aspx?mkt=fr-FR&amp;q={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="orange">
+    <item>orange.fr</item>
+    <item>http://www.orange.fr/favicon.ico</item>
+    <item>http://rws.search.ke.voila.fr/RW/S/opensearch_orange?rdata={searchTerms}</item>
+    <item>ISO-8859-1</item>
+    <item>http://search.ke.voila.fr/fr/cmplopensearch/xml/fullxml?rdata={searchTerms}</item>
+  </string-array>
+  <string-array name="aol_fr">
+    <item>aol.fr</item>
+    <item>http://www.aol.fr/favicon.ico</item>
+    <item>http://www.recherche.aol.fr/aol/search?q={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="virgilio">
+    <item>virgilio.alice.it</item>
+    <item>http://ricerca.alice.it/favicon.ico</item>
+    <item>http://ricerca.alice.it/ricerca?qs={searchTerms}</item>
+    <item>ISO-8859-1</item>
+    <item></item>
+  </string-array>
+  <string-array name="yahoo_it">
+    <item>it.yahoo.com</item>
+    <item>http://it.search.yahoo.com/favicon.ico</item>
+    <item>http://it.search.yahoo.com/search?ei={inputEncoding}&amp;fr=crmas&amp;p={searchTerms}</item>
+    <item>UTF-8</item>
+    <item>http://it-sayt.ff.search.yahoo.com/gossip-it-sayt?output=fxjson&amp;command={searchTerms}</item>
+  </string-array>
+  <string-array name="libero">
+    <item>libero.it</item>
+    <item>http://arianna.libero.it/favicon.ico</item>
+    <item>http://arianna.libero.it/search/abin/integrata.cgi?query={searchTerms}</item>
+    <item>ISO-8859-1</item>
+    <item></item>
+  </string-array>
+  <string-array name="ask_it">
+    <item>it.ask.com</item>
+    <item>http://it.ask.com/favicon.ico</item>
+    <item>http://it.ask.com/web?q={searchTerms}</item>
+    <item>UTF-8</item>
+    <item>http://ss.it.ask.com/query?q={searchTerms}&amp;li=ff</item>
+  </string-array>
+  <string-array name="live_it_IT">
+    <item>live.com</item>
+    <item>http://search.live.com/s/wlflag.ico</item>
+    <item>http://search.live.com/results.aspx?mkt=it-IT&amp;q={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="yahoo_jp">
+    <item>yahoo.co.jp</item>
+    <item>http://search.yahoo.co.jp/favicon.ico</item>
+    <item>http://search.yahoo.co.jp/search?ei={inputEncoding}&amp;fr=crmas&amp;p={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="msn_ja_JP">
+    <item>jp.msn.com</item>
+    <item>http://search.msn.co.jp/s/wlflag.ico</item>
+    <item>http://search.msn.co.jp/results.aspx?mkt=ja-JP&amp;q={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="biglobe">
+    <item>biglobe.ne.jp</item>
+    <item>http://cgi.search.biglobe.ne.jp/favicon.ico</item>
+    <item>http://cgi.search.biglobe.ne.jp/cgi-bin/search2-b?q={searchTerms}</item>
+    <item>Shift_JIS</item>
+    <item></item>
+  </string-array>
+  <string-array name="goo">
+    <item>goo.ne.jp</item>
+    <item>http://goo.ne.jp/gooicon.ico</item>
+    <item>http://search.goo.ne.jp/web.jsp?MT={searchTerms}&amp;IE={inputEncoding}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="nifty">
+    <item>nifty.com</item>
+    <item>http://www.nifty.com/favicon.ico</item>
+    <item>http://search.nifty.com/cgi-bin/search.cgi?Text={searchTerms}</item>
+    <item>Shift_JIS</item>
+    <item></item>
+  </string-array>
+  <string-array name="live">
+    <item>live.com</item>
+    <item>http://search.live.com/s/wlflag.ico</item>
+    <item>http://search.live.com/results.aspx?q={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="ilse">
+    <item>ilse.nl</item>
+    <item>http://search.ilse.nl/images/favicon.ico</item>
+    <item>http://search.ilse.nl/web?search_for={searchTerms}</item>
+    <item>ISO-8859-1</item>
+    <item></item>
+  </string-array>
+  <string-array name="msn_nl_NL">
+    <item>nl.msn.com</item>
+    <item>http://search.msn.nl/s/wlflag.ico</item>
+    <item>http://search.msn.nl/results.aspx?mkt=nl-NL&amp;q={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="yahoo_nl">
+    <item>nl.yahoo.com</item>
+    <item>http://nl.search.yahoo.com/favicon.ico</item>
+    <item>http://nl.search.yahoo.com/search?ei={inputEncoding}&amp;fr=crmas&amp;p={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="lycos_nl">
+    <item>lycos.nl</item>
+    <item>http://zoek.lycos.nl/favicon.ico</item>
+    <item>http://zoek.lycos.nl/cgi-bin/pursuit?query={searchTerms}</item>
+    <item>ISO-8859-1</item>
+    <item></item>
+  </string-array>
+  <string-array name="vinden">
+    <item>vinden.nl</item>
+    <item>http://www.vinden.nl/favicon.ico</item>
+    <item>http://www.vinden.nl/?q={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="msn_nb_NO">
+    <item>no.msn.com</item>
+    <item>http://search.msn.no/s/wlflag.ico</item>
+    <item>http://search.msn.no/results.aspx?mkt=nb-NO&amp;q={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="abcsok">
+    <item>abcsok.no</item>
+    <item>http://abcsok.no/favicon.ico</item>
+    <item>http://abcsok.no/index.html?q={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="yahoo_no">
+    <item>no.yahoo.com</item>
+    <item>http://no.search.yahoo.com/favicon.ico</item>
+    <item>http://no.search.yahoo.com/search?ei={inputEncoding}&amp;fr=crmas&amp;p={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="kvasir">
+    <item>kvasir.no</item>
+    <item>http://www.kvasir.no/img/favicon.ico</item>
+    <item>http://www.kvasir.no/nettsok/searchResult.html?searchExpr={searchTerms}</item>
+    <item>ISO-8859-1</item>
+    <item></item>
+  </string-array>
+  <string-array name="sesam">
+    <item>sesam.no</item>
+    <item>http://sesam.no/images/favicon.gif</item>
+    <item>http://sesam.no/search/?q={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="onet">
+    <item>onet.pl</item>
+    <item>http://szukaj.onet.pl/favicon.ico</item>
+    <item>http://szukaj.onet.pl/query.html?qt={searchTerms}</item>
+    <item>ISO-8859-2</item>
+    <item></item>
+  </string-array>
+  <string-array name="wp">
+    <item>wp.pl</item>
+    <item>http://szukaj.wp.pl/favicon.ico</item>
+    <item>http://szukaj.wp.pl/szukaj.html?szukaj={searchTerms}</item>
+    <item>ISO-8859-2</item>
+    <item></item>
+  </string-array>
+  <string-array name="live_pl_PL">
+    <item>live.com</item>
+    <item>http://search.live.com/s/wlflag.ico</item>
+    <item>http://search.live.com/results.aspx?mkt=pl-PL&amp;q={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="yandex_ru">
+    <item>yandex.ru</item>
+    <item>http://yandex.ru/favicon.ico</item>
+    <item>http://yandex.ru/yandsearch?text={searchTerms}</item>
+    <item>UTF-8</item>
+    <item>http://suggest.yandex.net/suggest-ff.cgi?part={searchTerms}</item>
+  </string-array>
+  <string-array name="rambler">
+    <item>rambler.ru</item>
+    <item>http://www.rambler.ru/favicon.ico</item>
+    <item>http://www.rambler.ru/srch?words={searchTerms}</item>
+    <item>windows-1251</item>
+    <item></item>
+  </string-array>
+  <string-array name="mail_ru">
+    <item>mail.ru</item>
+    <item>http://img.go.mail.ru/favicon.ico</item>
+    <item>http://go.mail.ru/search?q={searchTerms}</item>
+    <item>windows-1251</item>
+    <item></item>
+  </string-array>
+  <string-array name="yahoo_ru">
+    <item>ru.yahoo.com</item>
+    <item>http://ru.search.yahoo.com/favicon.ico</item>
+    <item>http://ru.search.yahoo.com/search?ei={inputEncoding}&amp;fr=crmas&amp;p={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="live_ru_RU">
+    <item>live.com</item>
+    <item>http://search.live.com/s/wlflag.ico</item>
+    <item>http://search.live.com/results.aspx?mkt=ru-RU&amp;q={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="eniro_se">
+    <item>eniro.se</item>
+    <item>http://eniro.se/favicon.ico</item>
+    <item>http://eniro.se/query?search_word={searchTerms}&amp;what=web_local</item>
+    <item>ISO-8859-1</item>
+    <item></item>
+  </string-array>
+  <string-array name="msn_sv_SE">
+    <item>se.msn.com</item>
+    <item>http://search.msn.se/s/wlflag.ico</item>
+    <item>http://search.msn.se/results.aspx?mkt=pv-SE&amp;q={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="altavista_se">
+    <item>se.altavista.com</item>
+    <item>http://se.altavista.com/favicon.ico</item>
+    <item>http://se.altavista.com/web/results?q={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="spray">
+    <item>spray.se</item>
+    <item>http://www.eniro.se/favicon.ico</item>
+    <item>http://www.eniro.se/query?ax=spray&amp;search_word={searchTerms}&amp;what=web</item>
+    <item>ISO-8859-1</item>
+    <item></item>
+  </string-array>
+  <string-array name="baidu">
+    <item>baidu.com</item>
+    <item>http://www.baidu.com/favicon.ico</item>
+    <item>http://www.baidu.com/s?wd={searchTerms}</item>
+    <item>GB2312</item>
+    <item></item>
+  </string-array>
+  <string-array name="yahoo_cn">
+    <item>cn.yahoo.com</item>
+    <item>http://search.cn.yahoo.com/favicon.ico</item>
+    <item>http://search.cn.yahoo.com/search?ei={inputEncoding}&amp;fr=crmas&amp;p={searchTerms}</item>
+    <item>GB2312</item>
+    <item></item>
+  </string-array>
+  <string-array name="sogou">
+    <item>sogou.com</item>
+    <item>http://www.sogou.com/favicon.ico</item>
+    <item>http://www.sogou.com/web?query={searchTerms}</item>
+    <item>GB2312</item>
+    <item></item>
+  </string-array>
+  <string-array name="soso">
+    <item>soso.com</item>
+    <item>http://www.soso.com/favicon.ico</item>
+    <item>http://www.soso.com/q?w={searchTerms}</item>
+    <item>GB2312</item>
+    <item></item>
+  </string-array>
+  <string-array name="yahoo_hk">
+    <item>hk.yahoo.com</item>
+    <item>http://hk.search.yahoo.com/favicon.ico</item>
+    <item>http://hk.search.yahoo.com/search?ei={inputEncoding}&amp;fr=crmas&amp;p={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="msn_zh_HK">
+    <item>hk.msn.com</item>
+    <item>http://search.msn.com.hk/s/wlflag.ico</item>
+    <item>http://search.msn.com.hk/results.aspx?mkt=zh-HK&amp;q={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="yahoo_tw">
+    <item>tw.yahoo.com</item>
+    <item>http://tw.search.yahoo.com/favicon.ico</item>
+    <item>http://tw.search.yahoo.com/search?ei={inputEncoding}&amp;fr=crmas&amp;p={searchTerms}</item>
+    <item>UTF-8</item>
+    <item></item>
+  </string-array>
+  <string-array name="yam">
+    <item>yam.com</item>
+    <item>http://www.yam.com/i/8/sky.ico</item>
+    <item>http://search.yam.com/wps?k={searchTerms}</item>
+    <item>Big5</item>
+    <item></item>
+  </string-array>
 </resources>
+
