@@ -32,7 +32,7 @@
   <string name="engine_2_label">Rambler</string>
   <bool   name="engine_3_enabled">true</bool>
   <string name="engine_3_name">mail_ru</string>
-  <string name="engine_3_label">MAIL.RU</string>
+  <string name="engine_3_label">\@MAIL.RU</string>
   <bool   name="engine_4_enabled">true</bool>
   <string name="engine_4_name">yahoo_ru</string>
   <string name="engine_4_label">Yahoo! &amp;#x043f&amp;#x043e-&amp;#x0440&amp;#x0443&amp;#x0441&amp;#x0441&amp;#x043a&amp;#x0438</string>

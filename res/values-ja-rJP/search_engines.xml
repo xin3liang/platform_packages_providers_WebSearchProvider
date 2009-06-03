@@ -38,7 +38,7 @@
   <string name="engine_4_label">goo</string>
   <bool   name="engine_5_enabled">true</bool>
   <string name="engine_5_name">nifty</string>
-  <string name="engine_5_label">nifty</string>
+  <string name="engine_5_label">\@nifty</string>
   <bool   name="engine_6_enabled">false</bool>
   <string name="engine_6_name"></string>
   <string name="engine_6_label"></string>
