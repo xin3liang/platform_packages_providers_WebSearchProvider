@@ -21,8 +21,11 @@
     package="com.android.websearch"
     android:sharedUserId="android.uid.shared">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application android:label="Web Search"
-        android:process="android.process.acore">
+            android:icon="@drawable/searchengine"
+            android:process="android.process.acore">
 
         <activity android:name=".WebSearch"
                 android:theme="@android:style/Theme.NoDisplay"
