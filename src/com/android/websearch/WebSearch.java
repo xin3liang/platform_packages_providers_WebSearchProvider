@@ -55,7 +55,10 @@ public class WebSearch extends Activity {
                 if (launchUri == null) {
                     Log.e(LOG_TAG, "Unable to get search URI for engine index " + engine_index);
                 } else {
-                    intent = new Intent(Intent.ACTION_VIEW, Uri.parse(launchUri));
+                    intent = new Intent(Intent.ACTION_SEARCH);
+                    intent.putExtra(SearchManager.QUERY, launchUri);
+                    intent.setComponent(new ComponentName(
+                            "com.android.browser", "com.android.browser.BrowserActivity"));
                     startActivity(intent);
                 }
             } catch (IllegalArgumentException exception) {
