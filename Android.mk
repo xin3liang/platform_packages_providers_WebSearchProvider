@@ -21,7 +21,7 @@ LOCAL_MODULE_TAGS := user # should be optional, but launcher crashes without thi
 
 LOCAL_SRC_FILES := $(call all-subdir-java-files)
 
-LOCAL_PACKAGE_NAME := WebSearch
+LOCAL_PACKAGE_NAME := WebSearchProvider
 LOCAL_CERTIFICATE := shared
 
 include $(BUILD_PACKAGE)
