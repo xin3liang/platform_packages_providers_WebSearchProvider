@@ -20,6 +20,7 @@
 <searchable xmlns:android="http://schemas.android.com/apk/res/android"
     android:label="@string/engine_1_label"
     android:voiceSearchMode="showVoiceSearchButton|launchWebSearch"
+    android:queryAfterZeroResults="true"
 
     android:searchSuggestAuthority="com.android.websearch.Suggest"
     android:searchSuggestSelection="field =?"
