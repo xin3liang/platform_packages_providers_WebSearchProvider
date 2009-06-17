@@ -23,7 +23,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <application android:label="Web Search"
+    <application android:label="@string/app_label"
             android:icon="@drawable/searchengine"
             android:process="android.process.acore">
 
