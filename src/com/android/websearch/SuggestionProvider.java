@@ -34,6 +34,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.AbstractCursor;
 import android.database.Cursor;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
@@ -99,10 +101,6 @@ public class SuggestionProvider extends ContentProvider {
         return true;
     }
 
-    private static ArrayListCursor makeEmptyCursor() {
-        return new ArrayListCursor(COLUMNS, new ArrayList<ArrayList>());
-    }
-
     /**
      * This will always return {@link SearchManager#SUGGEST_MIME_TYPE} as this
      * provider is purely to provide suggestions.
@@ -121,14 +119,17 @@ public class SuggestionProvider extends ContentProvider {
             String[] selectionArgs, String sortOrder) {
         String query = selectionArgs[0];
         if (TextUtils.isEmpty(query)) {
-            // Can't pass back null, things blow up
-            return makeEmptyCursor();
+            return null;
+        }
+        if (!isNetworkConnected()) {
+            Log.i(LOG_TAG, "Not connected to network.");
+            return null;
         }
 
         List<String> parts = uri.getPathSegments();
         if (parts.size() < 2) {
             Log.i(LOG_TAG, "Invalid URI " + uri.toString());
-            return makeEmptyCursor();
+            return null;
         }
 
         // Check if the specific search engine data is already loaded and if not load it now.
@@ -141,7 +142,7 @@ public class SuggestionProvider extends ContentProvider {
                     engine = new SearchEngineInfo(getContext(), engine_index);
                 } catch (IllegalArgumentException exception) {
                     Log.e(LOG_TAG, "Cannot load search engine index " + engine_index, exception);
-                    return makeEmptyCursor();
+                    return null;
                 }
                 mSearchEngines.put(engine_index, engine);
             }
@@ -150,7 +151,7 @@ public class SuggestionProvider extends ContentProvider {
         String suggestUri = engine.getSuggestUriForQuery(query);
         if (TextUtils.isEmpty(suggestUri)) {
             // No suggest URI available for this engine
-            return makeEmptyCursor();
+            return null;
         }
 
         try {
@@ -185,7 +186,21 @@ public class SuggestionProvider extends ContentProvider {
         } catch (JSONException e) {
             Log.w(LOG_TAG, "Error", e);
         }
-        return makeEmptyCursor();
+        return null;
+    }
+
+    private boolean isNetworkConnected() {
+        NetworkInfo networkInfo = getActiveNetworkInfo();
+        return networkInfo != null && networkInfo.isConnected();
+    }
+
+    private NetworkInfo getActiveNetworkInfo() {
+        ConnectivityManager connectivity =
+                (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivity == null) {
+            return null;
+        }
+        return connectivity.getActiveNetworkInfo();
     }
 
     private static class SuggestionsCursor extends AbstractCursor {
