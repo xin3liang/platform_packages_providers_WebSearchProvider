@@ -21,6 +21,7 @@
     android:label="@string/engine_7_label"
     android:voiceSearchMode="showVoiceSearchButton|launchWebSearch"
     android:queryAfterZeroResults="true"
+    android:autoUrlDetect="true"
 
     android:searchSuggestAuthority="com.android.websearch.Suggest"
     android:searchSuggestSelection="field =?"
