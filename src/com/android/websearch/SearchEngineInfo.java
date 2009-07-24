@@ -16,14 +16,13 @@
 
 package com.android.websearch;
 
-import java.net.URLEncoder;
-import java.util.Locale;
-
 import android.content.Context;
-import android.content.ComponentName;
 import android.content.res.Resources;
 import android.text.TextUtils;
 import android.util.Log;
+
+import java.net.URLEncoder;
+import java.util.Locale;
 
 
 /**
@@ -125,6 +124,10 @@ public class SearchEngineInfo {
      */
     public String getSuggestUriForQuery(String query) {
         return getFormattedUri(suggestUri(), query);
+    }
+
+    public boolean supportsSuggestions() {
+        return !TextUtils.isEmpty(suggestUri());
     }
 
     public String faviconUri() {

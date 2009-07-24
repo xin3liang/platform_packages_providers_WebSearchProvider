@@ -18,14 +18,11 @@ package com.android.websearch;
 
 import android.app.Activity;
 import android.app.SearchManager;
-import android.content.Context;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.SearchRecentSuggestions;
-import android.text.TextUtils;
 import android.util.Log;
 
 /**
@@ -40,28 +37,68 @@ public class WebSearch extends Activity {
         super.onCreate(savedInstanceState);
 
         Intent intent = getIntent();
-        if (intent != null && Intent.ACTION_WEB_SEARCH.equals(intent.getAction())) {
-            // Fetch the provider index for which this action was launched and load the provider
-            // data.
-            String[] parts = intent.getComponent().getClassName().split("\\.");
-            String engine_index = parts[parts.length - 1];
-            SearchEngineInfo engine = null;
-            try {
-                engine = new SearchEngineInfo((Context)this, engine_index);
+        if (intent == null) {
+            finish();
+            return;
+        }
 
+        String action = intent.getAction();
+        if (Intent.ACTION_WEB_SEARCH.equals(action)) {
+            SearchEngineInfo engine = getSearchEngine(this, intent.getComponent());
+            if (engine != null) {
                 // Format the URI to launch and open it in the browser.
                 String query = intent.getStringExtra(SearchManager.QUERY);
                 String launchUri = engine.getSearchUriForQuery(query);
                 if (launchUri == null) {
-                    Log.e(LOG_TAG, "Unable to get search URI for engine index " + engine_index);
+                    Log.e(LOG_TAG, "Unable to get search URI for engine "
+                            + intent.getComponent());
                 } else {
                     intent = new Intent(Intent.ACTION_VIEW, Uri.parse(launchUri));
                     startActivity(intent);
                 }
-            } catch (IllegalArgumentException exception) {
-                Log.e(LOG_TAG, "Cannot load search engine index " + engine_index, exception);
             }
+        } else if (SearchManager.INTENT_ACTION_WEB_SEARCH_SETTINGS.equals(action)) {
+            Intent settingsIntent = new Intent(SearchManager.INTENT_ACTION_WEB_SEARCH_SETTINGS);
+            settingsIntent.setClass(this, Settings.class);
+            ComponentName component = intent.getComponent();
+            settingsIntent.setData(componentNameToUri(component));
+            startActivity(settingsIntent);
         }
         finish();
     }
+
+    public static SearchEngineInfo getSearchEngine(Context context, ComponentName component) {
+        if (component == null) return null;
+        String[] parts = component.getClassName().split("\\.");
+        String engine_index = parts[parts.length - 1];
+        try {
+            return new SearchEngineInfo(context, engine_index);
+        } catch (IllegalArgumentException exception) {
+            Log.e(LOG_TAG, "Cannot load search engine index " + engine_index, exception);
+            return null;
+        }
+    }
+
+    // TODO: Maybe this should live in ComponentName?
+    public static Uri componentNameToUri(ComponentName component) {
+        if (component == null) return null;
+        return new Uri.Builder()
+                .scheme("package")
+                .authority(component.getPackageName())
+                .path(component.getClassName())
+                .query("")
+                .fragment("")
+                .build();
+    }
+
+    // TODO: Maybe this should live in ComponentName?
+    public static ComponentName componentNameFromUri(Uri activityUri) {
+        if (activityUri == null) return null;
+        String packageName = activityUri.getAuthority();
+        String className = activityUri.getLastPathSegment();
+        if (packageName == null || className == null) return null;
+        return new ComponentName(packageName, className);
+    }
+
+
 }
