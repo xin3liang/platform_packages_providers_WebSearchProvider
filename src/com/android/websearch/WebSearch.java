@@ -43,7 +43,7 @@ public class WebSearch extends Activity {
         }
 
         String action = intent.getAction();
-        if (Intent.ACTION_WEB_SEARCH.equals(action)) {
+        if (Intent.ACTION_WEB_SEARCH.equals(action) || Intent.ACTION_SEARCH.equals(action)) {
             SearchEngineInfo engine = getSearchEngine(this, intent.getComponent());
             if (engine != null) {
                 // Format the URI to launch and open it in the browser.
