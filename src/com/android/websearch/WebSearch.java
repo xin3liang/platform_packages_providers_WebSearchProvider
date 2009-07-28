@@ -23,6 +23,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Browser;
 import android.util.Log;
 
 /**
@@ -45,7 +46,12 @@ public class WebSearch extends Activity {
         String action = intent.getAction();
         if (Intent.ACTION_WEB_SEARCH.equals(action) || Intent.ACTION_SEARCH.equals(action)) {
             SearchEngineInfo engine = getSearchEngine(this, intent.getComponent());
-            if (engine != null) {
+            if (engine != null) {                
+                // The browser can pass along an application id which it uses to figure out which
+                // window to place a new search into. So if this exists, we'll pass it back to
+                // the browser.
+                String applicationId = intent.getStringExtra(Browser.EXTRA_APPLICATION_ID);
+                
                 // Format the URI to launch and open it in the browser.
                 String query = intent.getStringExtra(SearchManager.QUERY);
                 String launchUri = engine.getSearchUriForQuery(query);
@@ -54,6 +60,9 @@ public class WebSearch extends Activity {
                             + intent.getComponent());
                 } else {
                     intent = new Intent(Intent.ACTION_VIEW, Uri.parse(launchUri));
+                    if (applicationId != null) {
+                        intent.putExtra(Browser.EXTRA_APPLICATION_ID, applicationId);
+                    }
                     startActivity(intent);
                 }
             }
