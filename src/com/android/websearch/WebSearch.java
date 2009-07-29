@@ -49,8 +49,12 @@ public class WebSearch extends Activity {
             if (engine != null) {                
                 // The browser can pass along an application id which it uses to figure out which
                 // window to place a new search into. So if this exists, we'll pass it back to
-                // the browser.
+                // the browser. Otherwise, add our own package name as the application id, so that
+                // the browser can organize all searches launched from this provider together.
                 String applicationId = intent.getStringExtra(Browser.EXTRA_APPLICATION_ID);
+                if (applicationId == null) {
+                    applicationId = getPackageName();
+                }
                 
                 // Format the URI to launch and open it in the browser.
                 String query = intent.getStringExtra(SearchManager.QUERY);
@@ -60,9 +64,7 @@ public class WebSearch extends Activity {
                             + intent.getComponent());
                 } else {
                     intent = new Intent(Intent.ACTION_VIEW, Uri.parse(launchUri));
-                    if (applicationId != null) {
-                        intent.putExtra(Browser.EXTRA_APPLICATION_ID, applicationId);
-                    }
+                    intent.putExtra(Browser.EXTRA_APPLICATION_ID, applicationId);
                     startActivity(intent);
                 }
             }
