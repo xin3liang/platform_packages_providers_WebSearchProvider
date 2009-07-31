@@ -27,6 +27,12 @@ import android.provider.Browser;
 import android.util.Log;
 
 /**
+ * WebSearchProvider is a package that exposes a set of different web search providers for the
+ * user to choose between which differ per locale. For those web search providers that have
+ * support for search suggestions as the user types, this package also exposes those suggestions.
+ * This package does not expose Google as a web search provider; that is done by the GoogleSearch
+ * and EnhancedGoogleSearchProvider packages.
+ * 
  * This class routes the web search intent action on web suggestion results to the browser and opens
  * up the appropriate search engine results page.
  */

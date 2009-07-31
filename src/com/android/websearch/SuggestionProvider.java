@@ -49,9 +49,7 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * Use network-based Google Suggests to provide search suggestions.
- *
- * Future:  Merge live suggestions with saved recent queries
+ * Provides search suggestions, if any, for a given web search provider.
  */
 public class SuggestionProvider extends ContentProvider {
     private static final String USER_AGENT = "Android/1.0";
