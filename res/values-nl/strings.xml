@@ -15,5 +15,15 @@
 -->
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_label">"Internetzoekprovider"</string>
+    <string name="app_label" msgid="248678641586659803">"Internetzoekprovider"</string>
+    <!-- no translation found for search_engine_settings (8438764969986881690) -->
+    <skip />
+    <!-- no translation found for show_web_suggestions (2590088318932222111) -->
+    <skip />
+    <!-- no translation found for show_web_suggestions_summary_enabled (7764619421492022254) -->
+    <skip />
+    <!-- no translation found for show_web_suggestions_summary_disabled (6878975132163092355) -->
+    <skip />
+    <!-- no translation found for show_web_suggestions_not_supported (1797712365394842412) -->
+    <skip />
 </resources>

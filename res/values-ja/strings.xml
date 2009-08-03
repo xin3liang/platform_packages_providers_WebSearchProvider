@@ -15,7 +15,7 @@
 -->
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_label" msgid="248678641586659803">"Proveedor de búsquedas web"</string>
+    <string name="app_label" msgid="248678641586659803">"ウェブ検索プロバイダ"</string>
     <!-- no translation found for search_engine_settings (8438764969986881690) -->
     <skip />
     <!-- no translation found for show_web_suggestions (2590088318932222111) -->
