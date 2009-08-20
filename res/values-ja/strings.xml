@@ -16,14 +16,9 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_label" msgid="248678641586659803">"ウェブ検索プロバイダ"</string>
-    <!-- no translation found for search_engine_settings (8438764969986881690) -->
-    <skip />
-    <!-- no translation found for show_web_suggestions (2590088318932222111) -->
-    <skip />
-    <!-- no translation found for show_web_suggestions_summary_enabled (7764619421492022254) -->
-    <skip />
-    <!-- no translation found for show_web_suggestions_summary_disabled (6878975132163092355) -->
-    <skip />
-    <!-- no translation found for show_web_suggestions_not_supported (1797712365394842412) -->
-    <skip />
+    <string name="search_engine_settings" msgid="8438764969986881690">"%1$s検索の設定"</string>
+    <string name="show_web_suggestions" msgid="2590088318932222111">"入力候補の表示"</string>
+    <string name="show_web_suggestions_summary_enabled" msgid="7764619421492022254">"入力時に%1$sの入力候補を表示します"</string>
+    <string name="show_web_suggestions_summary_disabled" msgid="6878975132163092355">"入力時に%1$sの入力候補を表示しません"</string>
+    <string name="show_web_suggestions_not_supported" msgid="1797712365394842412">"%1$sの入力候補を取得できません"</string>
 </resources>
