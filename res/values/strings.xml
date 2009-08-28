@@ -21,11 +21,11 @@
     <!-- Title of the web search provider activity. -->
     <string name="app_label">Web Search Provider</string>
     <!-- Settings category title for 'Search engine settings' settings activity -->
-    <string name="search_engine_settings">%1$s search settings</string>
+    <string name="search_engine_settings"><xliff:g id="provider" example="Google">%1$s</xliff:g> search settings</string>
     <!-- Title and summaries for 'show web suggestions' check box setting -->
     <string name="show_web_suggestions">Show web suggestions</string>
-    <string name="show_web_suggestions_summary_enabled">Show suggestions from %1$s as you type</string>
-    <string name="show_web_suggestions_summary_disabled">Don\'t show suggestions from %1$s as you type</string>
-    <string name="show_web_suggestions_not_supported">Can\'t get suggestions from %1$s</string>
+    <string name="show_web_suggestions_summary_enabled">Show suggestions from <xliff:g id="provider" example="Google">%1$s</xliff:g> as you type</string>
+    <string name="show_web_suggestions_summary_disabled">Don\'t show suggestions from <xliff:g id="provider" example="Google">%1$s</xliff:g> as you type</string>
+    <string name="show_web_suggestions_not_supported">Can\'t get suggestions from <xliff:g id="provider" example="Google">%1$s</xliff:g></string>
 </resources>
 
